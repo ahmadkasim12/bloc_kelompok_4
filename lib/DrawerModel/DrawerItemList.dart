@@ -28,5 +28,12 @@ class Draweritemlist {
         Navigator.pushNamed(context, '/bangundatar');
       },
     ),
+    Modeldata(
+      context,
+      listName: "Kalkulator Perpangkatan",
+      onTap: () {
+        Navigator.pushNamed(context, '/perpangkatan');
+      },
+    ),
   ];
 }
