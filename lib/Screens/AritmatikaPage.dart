@@ -24,56 +24,82 @@ class Aritmatikapage extends StatelessWidget {
         title: const Text("Kalkulator Aritmatika"),
       ),
       drawer: MyDrawer(),
-      body: Container(
+      body: Padding(
+        padding: EdgeInsets.all(15),
         child: Column(
           children: [
-            GenericTextInput(
-                textHint: 'Input 1',
-                controller: _input1Controller,
-                margin: const EdgeInsets.all(10)),
-            GenericTextInput(
-                textHint: 'Input 2',
-                controller: _input2Controller,
-                margin: const EdgeInsets.only(bottom: 10, left: 10, right: 10)),
-            BlocBuilder<Operator, int>(
-              bloc: aritmatika,
-              builder: (context, state) {
-                return DropdownButton<String>(
-                    items:
-                        operator.map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                    value: operator[state],
-                    onChanged: (value) {
-                      int selectedIndex = operator.indexOf(value!);
-                      aritmatika.setIndex(selectedIndex);
-                    });
-              },
-            ),
-            GenericButton(
-                onPressed: () {
-                  final input1 = double.tryParse(_input1Controller.text) ?? 0.0;
-                  final input2 = double.tryParse(_input2Controller.text) ?? 0.0;
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.black12,
+              ),
+              padding: EdgeInsets.all(15),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text("Meow"),
+                    ],
+                  ),
+                  GenericTextInput(
+                      textHint: "Input 1",
+                      controller: _input1Controller,
+                      margin: EdgeInsets.only(bottom: 10, top: 10)),
+                  GenericTextInput(
+                      textHint: "Input 2",
+                      controller: _input2Controller,
+                      margin: EdgeInsets.only(bottom: 10)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      BlocBuilder<Operator, int>(
+                        bloc: aritmatika,
+                        builder: (context, state) {
+                          return DropdownButton<String>(
+                              items: operator.map<DropdownMenuItem<String>>(
+                                      (String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
+                              value: operator[state],
+                              onChanged: (value) {
+                                int selectedIndex = operator.indexOf(value!);
+                                aritmatika.setIndex(selectedIndex);
+                              });
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GenericButton(
+                          onPressed: () {
+                            final input1 =
+                                double.tryParse(_input1Controller.text) ?? 0.0;
+                            final input2 =
+                                double.tryParse(_input2Controller.text) ?? 0.0;
 
-                  context
-                      .read<InputHolderBloc>()
-                      .add(UpdateInputs(input1, input2));
-                  output.doOperation(input1, input2, aritmatika.init);
-                },
-                text: "Calculate"),
-            Text("Results:"),
-            BlocBuilder<InputOperation, double>(
-              bloc: output,
-              builder: (context, state) {
-                return Text(
-                  '$state',
-                  style: TextStyle(fontSize: 46),
-                );
-              },
-            )
+                            context
+                                .read<InputHolderBloc>()
+                                .add(UpdateInputs(input1, input2));
+                            output.doOperation(input1, input2, aritmatika.init);
+                          },
+                          text: "Calculate"),
+                      BlocBuilder<InputOperation, double>(
+                        bloc: output,
+                        builder: (context, state) {
+                          return Text('Hasil: $state');
+                        },
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       ),
