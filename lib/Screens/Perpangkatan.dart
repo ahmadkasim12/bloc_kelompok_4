@@ -18,34 +18,39 @@ class Perpangkatan extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Kalkulator Pangkat')),
       drawer: MyDrawer(),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            GenericTextInput(textHint: "Masukkan angka", controller: angka, margin: EdgeInsets.zero,),
-            GenericTextInput(textHint: "Masukkan pangkat", controller: pangkat, margin: EdgeInsets.zero,),
+      body: Column(
+        children: [
+          GenericTextInput(
+            textHint: "Masukkan angka",
+            controller: angka,
+            margin: EdgeInsets.all(10),
+          ),
+          GenericTextInput(
+            textHint: "Masukkan pangkat",
+            controller: pangkat,
+            margin: EdgeInsets.only(bottom: 10, left: 10, right: 10),
+          ),
+          GenericButton(
+              text: "Calculate",
+              onPressed: () {
+                final input1 = double.tryParse(angka.text) ?? 0.0;
+                final input2 = double.tryParse(pangkat.text) ?? 0.0;
 
-            SizedBox(height: 20),
-
-            GenericButton(text: "Hasil", onPressed: () {
-              final input1 = double.tryParse(angka.text) ?? 0.0;
-              final input2 = double.tryParse(pangkat.text) ?? 0.0;
-
-              context.read<InputHolderBloc>().add(UpdateInputs(input1, input2));
-              output.doOperation(input1, input2);
-            }),
-
-            SizedBox(height: 20),
-            BlocBuilder<PowOperation, double>(
+                context
+                    .read<InputHolderBloc>()
+                    .add(UpdateInputs(input1, input2));
+                output.doOperation(input1, input2);
+              }),
+          Text("Results:"),
+          BlocBuilder<PowOperation, double>(
+              bloc: output,
               builder: (context, state) {
                 return Text(
-                  "Hasil: $state",
-                  style: TextStyle(fontSize: 24),
+                  '$state',
+                  style: TextStyle(fontSize: 46),
                 );
-              }
-            ),
-          ],
-        ),
+              }),
+        ],
       ),
     );
   }
