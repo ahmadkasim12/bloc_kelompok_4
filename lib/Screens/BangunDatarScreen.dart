@@ -68,7 +68,7 @@ class BangunDatarPage extends StatelessWidget {
                 context
                     .read<InputHolderBloc>()
                     .add(UpdateInputs(input1, input2));
-                outputArea.calculateArea(input1, input2, bangunDatar.);
+                outputArea.calculateArea(input1, input2, bangunDatar.init);
               },
               text: "Calculate",
             ),
