@@ -7,6 +7,8 @@ import 'package:bloc_implementation_assignment/bloc/bloc_bangun_ruang/input-ruan
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'bloc/bloc_datar/input_datar.dart';
+
 void main() {
   runApp(MultiBlocProvider(
     providers: [
@@ -15,6 +17,9 @@ void main() {
       ),
       BlocProvider(
         create: (context) => InputHolderBloc2(),
+      ),
+      BlocProvider(
+        create: (context) => InputHolderBloc3(),
       )
     ],
     child: MaterialApp(
