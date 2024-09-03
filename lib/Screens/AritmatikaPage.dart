@@ -27,14 +27,20 @@ class Aritmatikapage extends StatelessWidget {
       body: Container(
         child: Column(
           children: [
-            GenericTextInput(textHint: 'Input 1', controller: _input1Controller, margin: const EdgeInsets.all(10)),
-            GenericTextInput(textHint: 'Input 2', controller: _input2Controller, margin: const EdgeInsets.only(bottom: 10, left: 10, right: 10)),
+            GenericTextInput(
+                textHint: 'Input 1',
+                controller: _input1Controller,
+                margin: const EdgeInsets.all(10)),
+            GenericTextInput(
+                textHint: 'Input 2',
+                controller: _input2Controller,
+                margin: const EdgeInsets.only(bottom: 10, left: 10, right: 10)),
             BlocBuilder<Operator, int>(
               bloc: aritmatika,
               builder: (context, state) {
                 return DropdownButton<String>(
                     items:
-                    operator.map<DropdownMenuItem<String>>((String value) {
+                        operator.map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
                         child: Text(value),
@@ -47,13 +53,17 @@ class Aritmatikapage extends StatelessWidget {
                     });
               },
             ),
-            GenericButton(onPressed: () {
-              final input1 = double.tryParse(_input1Controller.text) ?? 0.0;
-              final input2 = double.tryParse(_input2Controller.text) ?? 0.0;
+            GenericButton(
+                onPressed: () {
+                  final input1 = double.tryParse(_input1Controller.text) ?? 0.0;
+                  final input2 = double.tryParse(_input2Controller.text) ?? 0.0;
 
-              context.read<InputHolderBloc>().add(UpdateInputs(input1, input2));
-              output.doOperation(input1, input2, aritmatika.init);
-            }, text: "Calculate"),
+                  context
+                      .read<InputHolderBloc>()
+                      .add(UpdateInputs(input1, input2));
+                  output.doOperation(input1, input2, aritmatika.init);
+                },
+                text: "Calculate"),
             Text("Results:"),
             BlocBuilder<InputOperation, double>(
               bloc: output,
