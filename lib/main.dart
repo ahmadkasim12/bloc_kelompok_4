@@ -19,7 +19,7 @@ void main() {
           initialRoute: '/arimatika',
           routes: {
             '/arimatika': (context) => Aritmatikapage(),
-            '/bangundatar': (context) => Bangundatarscreen(),
+            '/bangundatar': (context) => BangunDatarPage(),
             '/bangunruang': (context) => Bangunruangscreen(),
             '/perpangkatan': (context) => Perpangkatan(),
           },
