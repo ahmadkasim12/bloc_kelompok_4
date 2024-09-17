@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc_aritmatika/input_bloc.dart';
+import '../bloc_aritmatika/input_event.dart';
 import 'dart:math';
 
 class KalkulasiLingkaran extends Bloc<InputEvent, double> {

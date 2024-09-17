@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'package:bloc_implementation_assignment/bloc/bloc_aritmatika/input_bloc.dart';
+import 'package:bloc_implementation_assignment/bloc/bloc_aritmatika/input_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PowOperation extends Bloc<InputEvent, double> {

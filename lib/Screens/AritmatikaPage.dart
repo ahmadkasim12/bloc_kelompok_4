@@ -1,10 +1,9 @@
 import 'package:bloc_implementation_assignment/Widgets/GenericButton.dart';
 import 'package:bloc_implementation_assignment/Widgets/GenericTextField.dart';
-import 'package:bloc_implementation_assignment/bloc/bloc_aritmatika/operator.dart';
+import 'package:bloc_implementation_assignment/bloc/bloc_aritmatika/operator_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/bloc_aritmatika/input_bloc.dart';
-
+import '../bloc/bloc_aritmatika/input_event.dart';
 import '../Widgets/Drawer.dart';
 
 class Aritmatikapage extends StatelessWidget {

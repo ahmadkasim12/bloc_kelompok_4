@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc_aritmatika/input_bloc.dart';
+import '../bloc_aritmatika/input_event.dart';
 
 class KalkulasiBalok extends Bloc<InputEvent, double> {
   KalkulasiBalok({this.operatorResult = 0}) : super(operatorResult);

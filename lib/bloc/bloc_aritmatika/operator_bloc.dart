@@ -1,26 +1,27 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'operator.dart';
 
-abstract class InputEvent {}
+import '../bloc_bangun_ruang/input-ruang.dart';
 
-Operator aritmatika = Operator();
-
-class UpdateInputs extends InputEvent {
-  final double input1;
-  final double input2;
-
-  UpdateInputs(this.input1, this.input2);
+class Operator extends Bloc<Operator, int>{
+  Operator({this.init = 0}) : super(init);
+  int init;
+  void setIndex (int index){
+    emit(init = index);
+  }
+  void onChange(Change<int> change){
+    super.onChange(change);
+    print(change);
+  }
 }
 
-class InputHolderBloc extends Bloc<InputEvent, Map<String, double>> {
-  InputHolderBloc() : super({"input1": 0, "input2": 0}) {
-    on<UpdateInputs>((event, emit) {
-      emit({
-        "input1": event.input1,
-        "input2": event.input2,
-      });
-    });
-  }
+class operatorAritmatika {
+  List<String> operator = <String>[
+    'Perjumlahan',
+    'Pengurangan',
+    'Perkalian',
+    'Pembagian',
+    'Modulus'
+  ];
 }
 
 class InputOperation extends Bloc<InputEvent, double> {

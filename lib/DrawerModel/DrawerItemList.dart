@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'ModelData.dart';
 
 class Draweritemlist {
@@ -8,29 +8,33 @@ class Draweritemlist {
 
   List<Modeldata> get itemList => [
     Modeldata(
+      icon: Icon(Icons.numbers),
       context,
-      listName: "Kalkulator Aritmatika",
+      listName: "Aritmatika",
       onTap: () {
         Navigator.pushNamed(context, '/arimatika');
       },
     ),
     Modeldata(
+      icon: Icon(Icons.square_outlined),
       context,
-      listName: "Kalkulator Bangun Ruang",
+      listName: "Bangun Ruang",
       onTap: () {
         Navigator.pushNamed(context, '/bangunruang');
       },
     ),
     Modeldata(
+      icon: Icon(Icons.circle_outlined),
       context,
-      listName: "Kalkulator Bangun Datar",
+      listName: "Bangun Datar",
       onTap: () {
         Navigator.pushNamed(context, '/bangundatar');
       },
     ),
     Modeldata(
+      icon: Icon(Icons.power_outlined),
       context,
-      listName: "Kalkulator Perpangkatan",
+      listName: "Perpangkatan",
       onTap: () {
         Navigator.pushNamed(context, '/perpangkatan');
       },

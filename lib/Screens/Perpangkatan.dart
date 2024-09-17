@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../Widgets/Drawer.dart';
 import '../Widgets/GenericButton.dart';
 import '../Widgets/GenericTextField.dart';
-import '../bloc/bloc_aritmatika/input_bloc.dart';
+import '../bloc/bloc_aritmatika/input_event.dart';
 import '../bloc/bloc_perpangkatan/operator_perpangkatan.dart';
 
 class Perpangkatan extends StatelessWidget {

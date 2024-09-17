@@ -9,6 +9,7 @@ class Adaptor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      leading: data.icon,
       title: Text(data.listName),
       onTap: data.onTap,
     );
